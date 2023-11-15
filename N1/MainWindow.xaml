@@ -1,0 +1,48 @@
+﻿<Window x:Class="N1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:N1"
+        mc:Ignorable="d"
+        Title="Лаба 5" ResizeMode="NoResize" Height="450" Width="450
+        ">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="32"></Setter>
+            <Setter Property="Height" Value="64"></Setter>
+            <Setter Property="Width" Value="64"></Setter>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Lavender"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Width" Value="128"></Setter>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Label HorizontalAlignment="Left" Margin="130,64,0,0" Content="Введите двоичные числа" VerticalAlignment="Top" Width="232" FontSize="18" FontWeight="Bold" BorderThickness="0"/>
+
+        <Label Content="Первое число: " HorizontalAlignment="Left" Margin="64,129,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_firstNum" HorizontalAlignment="Left" Margin="182,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+        <Label Content="Второе число: " HorizontalAlignment="Left" Margin="64,165,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_secondNum" HorizontalAlignment="Left" Margin="182,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+        <Label Content="Результат: " HorizontalAlignment="Left" Margin="64,201,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tb_result" HorizontalAlignment="Left" Margin="182,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"/>
+
+        <Button x:Name="btn_sum" Content="+" HorizontalAlignment="Left" Margin="64,290,0,0" VerticalAlignment="Top" Click="clickAdd"/>
+        <Button x:Name="tb_sub" Content="-" HorizontalAlignment="Left" Margin="150,290,0,0" VerticalAlignment="Top" Click="clickSub"/>
+        <Button x:Name="tb_mul" Content="×" HorizontalAlignment="Left" Margin="236,290,0,0" VerticalAlignment="Top" Click="clickMul"/>
+        <Button x:Name="tb_div" Content="÷" HorizontalAlignment="Left" Margin="322,290,0,0" VerticalAlignment="Top" Click="clickDiv"/>
+
+    </Grid>
+</Window>
