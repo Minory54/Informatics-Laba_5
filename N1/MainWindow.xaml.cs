@@ -15,11 +15,12 @@ using System.Windows.Shapes;
 
 namespace N1
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
 
         private int readInt(TextBox textBox) // Проверка введенной строки на тип int
         {
@@ -105,9 +106,9 @@ namespace N1
         }
 
         static void print(int[] m, TextBlock textBox)
-        {            
+        {
             string result = "";
-            
+
             for (int i = 0; i < m.Length; i++)
             {
                 if (i == 4)
@@ -124,9 +125,16 @@ namespace N1
             textBox.Text = result;
         }
 
-        public MainWindow()
+        int[] shift(int[] num1, int s)
         {
-            InitializeComponent();
+            int[] resArray = new int[8];
+
+            for (int i = 0, j = s; j < 8; i++, j++)
+            {
+                resArray[i] = num1[j];
+            }
+
+            return resArray;
         }
 
         static int[] binaryAdd(int[] num1, int[] num2)
@@ -149,7 +157,7 @@ namespace N1
             }
 
             return resArray;
-        }
+        } // Сумма
 
         static int[] binarySub(int[] num1, int[] num2)
         {
@@ -160,17 +168,32 @@ namespace N1
 
 
             return resArray;
-        }
+        }  //Разность
 
-        static int[] binaryMul(int[] num1, int[] num2)
+        int[] binaryMul(int[] num1, int[] num2)
         {
-            return null;
-        }
+            int[] resArray = new int[8];
 
-        static int[] binaryDiv(int[] num1, int[] num2)
+            for (int i = resArray.Length - 1; i >= 0; i--)
+            {
+                if (num2[i] == 1)
+                {
+                    resArray = binaryAdd(shift(num1, 7 - i), resArray);
+                }
+            }
+
+            return resArray;
+        } // Умножение
+
+        int[] binaryDiv(int[] num1, int[] num2)
         {
-            return null;
-        }
+            int[] num = { 0, 0, 0, 0, 0, 0, 0, 0 };
+            int[] resArray = new int[8];
+
+
+
+            return resArray;
+        } // Деление
 
         private void clickAdd(object sender, RoutedEventArgs e)
         {
@@ -183,7 +206,7 @@ namespace N1
             if (firstNum != 0 && secondNum != 0)
             {
                 print(binaryAdd(firstArr, secondArr), tb_result);
-            }         
+            }
         }
 
         private void clickSub(object sender, RoutedEventArgs e)
@@ -202,12 +225,32 @@ namespace N1
 
         private void clickMul(object sender, RoutedEventArgs e)
         {
-            //binaryMul(0, 0);
+            int firstNum = readInt(tb_firstNum);
+            int secondNum = readInt(tb_secondNum);
+
+            int[] firstArr = intToBin(firstNum);
+            int[] secondArr = intToBin(secondNum);
+
+            if (firstNum != 0 && secondNum != 0)
+            {
+                print(binaryMul(firstArr, secondArr), tb_result);
+            }
         }
 
         private void clickDiv(object sender, RoutedEventArgs e)
         {
-            //binaryDiv(0, 0);
-        }
-    }
+            {
+                int firstNum = readInt(tb_firstNum);
+                int secondNum = readInt(tb_secondNum);
+
+                int[] firstArr = intToBin(firstNum);
+                int[] secondArr = intToBin(secondNum);
+
+                if (firstNum != 0 && secondNum != 0)
+                {
+                    print(binaryDiv(firstArr, secondArr), tb_result);
+                }
+
+            }
+    }   }
 }
