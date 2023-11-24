@@ -166,7 +166,6 @@ namespace N1
 
             resArray = binaryAdd(num1, num2);
 
-
             return resArray;
         }  //Разность
 
@@ -187,13 +186,69 @@ namespace N1
 
         int[] binaryDiv(int[] num1, int[] num2)
         {
-            int[] num = { 0, 0, 0, 0, 0, 0, 0, 0 };
-            int[] resArray = new int[8];
+            //int[] num = { 0, 0, 0, 0, 0, 0, 0, 0 };
+            //int[] delnum = { 0, 0, 0, 0, 0, 0, 1, 0 };
+            //int[] resArray = new int[8];
+            //int[] tempnum = new int[8];
+
+            //for (int i = resArray.Length - 1; i >= 0; i--)
+            //{
+            //    //tempnum = binarySub(num, delnum);
+            //    //if (tempnum[i] == 1) resArray[i] = 0;
+            //    //else
+            //    //{
+            //    //    resArray[i] = 1;
+            //    //    num = tempnum;
+            //    //    shift(num, (resArray.Length - 1) - i);
+            //    //}
+
+            //    num1[7] = num1[i];
+            //    tempnum = binarySub(num1, num2);
+
+            //    if (tempnum[0] == 1)
+            //    {
+            //        resArray[i] = 0;
+            //    }
+            //    else
+            //    {
+            //        resArray[i] = 1;
+            //        num1 = tempnum;
+            //    }
+
+            //    num1 = shift(num1, 1);
+            //}
+
+            int[] res = new int[8];
+            List<int[]> ints = new List <int[]>();
+
+            for(int i = 6, j = 1; i>=0; i--, j++ )
+            {
+                if (num2[i] == 1)
+                {
+                    ints.Add(shiftR(num1, j));
+                }
+            }
+
+            foreach (int[] a in ints)
+            {
+                res = binaryAdd(a, res);
+            }
 
 
 
-            return resArray;
+
+            return res;
         } // Деление
+
+        private int[] shiftR(int[] m, int a)
+        {
+            int[] res = new int[8];
+            for(int i = 0; i < 8-a; i++)
+            {
+                res[i+a] = m[i]; 
+            }
+            return res;
+        }
 
         private void clickAdd(object sender, RoutedEventArgs e)
         {
